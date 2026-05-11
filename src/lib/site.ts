@@ -20,18 +20,18 @@ export const site = {
     instagramUrl: "https://www.instagram.com/jk_plumbingsolutionss/",
   },
   nav: [
+    { label: "Problems", href: "#problems" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
-    { label: "Service Area", href: "#service-area" },
-    { label: "Gallery", href: "#gallery" },
+    { label: "Areas", href: "#areas" },
     { label: "Contact", href: "#contact" },
   ],
   trustItems: [
-    "Licensed Plumber",
-    "ABN 99 681 661 834",
+    "Licensed plumber",
     "Licence 477160C",
-    "Campbelltown Based",
-    "Servicing Sydney",
+    "ABN 99 681 661 834",
+    "Campbelltown based",
+    "Sydney-wide work",
   ],
   services: [
     {
@@ -85,55 +85,135 @@ export const site = {
   ],
   commonProblems: [
     {
-      title: "Water is backing up or draining slowly",
+      title: "Water backing up or draining slowly",
       description:
-        "Blocked sinks, toilets, showers and external drains need a clear look at what is causing the restriction, not just a quick push-through.",
-      service: "Blocked drains",
+        "Sinks, toilets, showers and outdoor drains can turn messy fast. Call through what is backing up and where it is happening.",
+      action: "Call about a blocked drain",
     },
     {
-      title: "A leak is starting to cause damage",
+      title: "No hot water or changing temperature",
       description:
-        "Leaking taps, toilets, pipework and fixtures are easier to manage when the source is found early and repaired cleanly.",
-      service: "Emergency repairs",
+        "If the system runs cold, cuts in and out, or is struggling to keep up, explain the system type and what has changed.",
+      action: "Call about hot water",
     },
     {
-      title: "The hot water has stopped keeping up",
+      title: "Tap, toilet, pipe or fixture leaking",
       description:
-        "Faults, ageing systems and poor performance can be checked before deciding whether repair or replacement makes sense.",
-      service: "Hot water systems",
+        "Tell us what is leaking, whether water is still running, and if anything has been turned off already.",
+      action: "Call about a leak",
     },
     {
-      title: "The plumbing needs to work with other trades",
+      title: "Gas appliance or connection work",
       description:
-        "Renovations, new builds and fit-offs need sequencing, coordination and a plumber who understands the finished result.",
-      service: "Renovations and new builds",
+        "For gas installations and connections, the job needs licensed plumbing and a clear scope before work starts.",
+      action: "Call about gas work",
+    },
+    {
+      title: "Bathroom, kitchen or laundry renovation",
+      description:
+        "Rough-ins, fixture locations and fit-offs need to line up with the builder, the layout and the finished room.",
+      action: "Call about a renovation",
+    },
+    {
+      title: "New build or commercial project plumbing",
+      description:
+        "For project work, call through the stage, site location and what needs to be coordinated next.",
+      action: "Call about project work",
     },
   ],
   serviceGroups: [
     {
       title: "Urgent repairs",
       description:
-        "When something is leaking, blocked or no longer usable, the priority is to make the next step clear and practical.",
-      items: ["Blocked drains", "Burst pipe repairs", "Leaking taps and toilets", "Hot water faults"],
+        "For plumbing issues that are active, messy or stopping the room from being used.",
+      items: ["Blocked drains", "Burst pipes", "Leaks", "Hot water faults"],
     },
     {
       title: "Home plumbing",
       description:
-        "Everyday plumbing for households across Campbelltown, the Macarthur region and wider Sydney.",
-      items: ["General maintenance", "Fixtures and pipework", "Hot water systems", "Gas installations"],
+        "Everyday work around the house, handled with a straight explanation before the fix.",
+      items: ["Taps and toilets", "Fixtures and pipework", "Hot water systems", "Gas installations"],
     },
     {
       title: "Renovations and new builds",
       description:
-        "Plumbing support that fits around builders, other trades and the standard of finish the project needs.",
-      items: ["Bathroom renovations", "Kitchen and laundry plumbing", "Rough-ins", "Fit-offs"],
+        "Plumbing that needs to line up with the build, other trades and the final finish.",
+      items: ["Rough-ins", "Fit-offs", "Bathroom plumbing", "Kitchen and laundry plumbing"],
     },
     {
       title: "Commercial and maintenance",
       description:
-        "Responsive plumbing for business premises, fit-outs and ongoing maintenance requirements.",
-      items: ["Commercial repairs", "Preventive maintenance", "Fit-out plumbing", "Project coordination"],
+        "Practical support for businesses, maintenance jobs, fit-outs and coordinated works.",
+      items: ["Repairs", "Maintenance", "Fit-out plumbing", "Project coordination"],
     },
+  ],
+  processSteps: [
+    {
+      title: "Call and explain what is happening",
+      description:
+        "Blocked, leaking, cold or being built? Start with the plain version of the problem.",
+    },
+    {
+      title: "Send photos if useful",
+      description:
+        "A photo of the fixture, drain, system or work area can make the first conversation clearer.",
+    },
+    {
+      title: "Get the next step explained",
+      description:
+        "You will know what makes sense next before the job turns into guesswork.",
+    },
+    {
+      title: "Work is completed properly and cleanly",
+      description:
+        "The focus is to finish the plumbing work neatly and without shortcuts.",
+    },
+  ],
+  workPhotos: [
+    {
+      title: "Drain investigation",
+      description: "Equipment-led checks for drainage issues.",
+      src: "/images/tech.JPEG",
+      alt: "Drain inspection equipment used on a plumbing job",
+    },
+    {
+      title: "Bathroom fit-offs",
+      description: "Finished plumbing for bathroom renovation work.",
+      src: "/images/bathroom.jpg",
+      alt: "Completed bathroom plumbing fit-off",
+    },
+    {
+      title: "Kitchen plumbing",
+      description: "Sink, tap and fixture work for kitchen spaces.",
+      src: "/images/sink%20and%20tap.jpg",
+      alt: "Kitchen sink and tap plumbing work",
+    },
+    {
+      title: "Fixture repairs",
+      description: "Leaks, taps and practical maintenance plumbing.",
+      src: "/images/tap.JPEG",
+      alt: "Outdoor tap plumbing repair",
+    },
+    {
+      title: "Bathroom fixtures",
+      description: "Toilets, basins and finished fixture installs.",
+      src: "/images/toilet%20and%20sink.JPEG",
+      alt: "Toilet and sink plumbing installation",
+    },
+    {
+      title: "New work and maintenance",
+      description: "Plumbing support for homes, businesses and projects.",
+      src: "/images/double%20sink.JPEG",
+      alt: "Double sink plumbing work",
+    },
+  ],
+  serviceAreas: [
+    "Campbelltown",
+    "Macarthur region",
+    "South West Sydney",
+    "Liverpool area",
+    "Camden and Narellan",
+    "Greater Sydney",
   ],
   projectRange: [
     {

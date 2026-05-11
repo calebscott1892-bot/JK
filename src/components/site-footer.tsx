@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div>
           <p className="text-lg font-semibold text-white">{site.legalName}</p>
           <p className="mt-4 max-w-xl text-sm leading-6">
-            Reliable plumbing solutions across Campbelltown and Sydney, with licensed workmanship and clear communication from start to finish.
+            Campbelltown based plumbing for repairs, maintenance, gas, hot water, renovations, new builds and commercial work across Sydney.
           </p>
         </div>
 

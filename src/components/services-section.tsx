@@ -1,11 +1,4 @@
-import {
-  Building2,
-  Check,
-  ClipboardList,
-  Home,
-  Siren,
-  Wrench,
-} from "lucide-react";
+import { ArrowRight, Building2, Check, ClipboardList, Home, Siren, Wrench } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
@@ -19,39 +12,76 @@ const serviceGroupIcons = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="services" className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionHeading
             label="Services"
-            title="Four clear ways JK Plumbing Solutions can help."
-            description="Instead of a long menu of plumbing jargon, the work is grouped around the reason people usually call: something urgent, something at home, something being built or something that needs ongoing maintenance."
+            title="Choose the pathway that matches the job."
+            description="Repairs, home plumbing, project work and commercial maintenance each need a slightly different conversation. Start with the closest fit and call if you are unsure."
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:auto-rows-fr">
           {site.serviceGroups.map((group, index) => {
             const Icon = serviceGroupIcons[index];
 
             return (
-              <Reveal key={group.title} delay={index * 0.03}>
-                <article className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-plumbing-blue/35 hover:shadow-lg hover:shadow-slate-200/70">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex size-12 items-center justify-center rounded-lg bg-blue-50 text-plumbing-blue">
-                      <Icon aria-hidden="true" size={23} />
+              <Reveal
+                key={group.title}
+                delay={index * 0.03}
+                className={index === 0 || index === 3 ? "lg:col-span-7" : "lg:col-span-5"}
+              >
+                <article
+                  className={
+                    index === 0
+                      ? "group flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl bg-navy-950 p-7 text-white shadow-2xl shadow-slate-300/60"
+                      : index === 1
+                        ? "group flex h-full min-h-[360px] flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-plumbing-blue/35 hover:shadow-xl hover:shadow-slate-200/70"
+                        : index === 2
+                          ? "group flex h-full min-h-[360px] flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-plumbing-blue/35 hover:shadow-xl hover:shadow-slate-200/70"
+                          : "group flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl bg-charcoal-900 p-7 text-white shadow-2xl shadow-slate-300/50"
+                  }
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div
+                      className={
+                        index === 0 || index === 3
+                          ? "flex size-14 items-center justify-center rounded-2xl bg-plumbing-orange text-white shadow-lg shadow-black/20"
+                          : "flex size-14 items-center justify-center rounded-2xl bg-blue-50 text-plumbing-blue"
+                      }
+                    >
+                      <Icon aria-hidden="true" size={27} />
                     </div>
-                    <span className="font-mono text-sm font-semibold text-slate-300">0{index + 1}</span>
+                    <span className={index === 0 || index === 3 ? "font-mono text-lg font-semibold text-white/25" : "font-mono text-lg font-semibold text-slate-300"}>
+                      0{index + 1}
+                    </span>
                   </div>
-                  <h3 className="mt-6 text-xl font-semibold leading-tight text-navy-950">{group.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{group.description}</p>
-                  <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5">
+                  <h3 className={index === 0 || index === 3 ? "mt-8 text-3xl font-semibold leading-tight text-white" : "mt-8 text-3xl font-semibold leading-tight text-navy-950"}>
+                    {group.title}
+                  </h3>
+                  <p className={index === 0 || index === 3 ? "mt-4 text-base leading-7 text-slate-300" : "mt-4 text-base leading-7 text-slate-600"}>
+                    {group.description}
+                  </p>
+                  <ul className={index === 0 || index === 3 ? "mt-7 grid gap-2 border-t border-white/10 pt-6 sm:grid-cols-2" : "mt-7 space-y-2 border-t border-slate-100 pt-6"}>
                     {group.items.map((detail) => (
-                      <li key={detail} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                        <Check aria-hidden="true" size={15} className="text-plumbing-blue" />
+                      <li key={detail} className={index === 0 || index === 3 ? "flex items-center gap-2 text-sm font-medium text-slate-100" : "flex items-center gap-2 text-sm font-medium text-slate-700"}>
+                        <Check aria-hidden="true" size={15} className={index === 0 || index === 3 ? "text-plumbing-orange" : "text-plumbing-blue"} />
                         {detail}
                       </li>
                     ))}
                   </ul>
+                  <a
+                    href={site.phone.href}
+                    className={
+                      index === 0 || index === 3
+                        ? "mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-plumbing-orange"
+                        : "mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-plumbing-blue"
+                    }
+                  >
+                    Call about {group.title.toLowerCase()}
+                    <ArrowRight aria-hidden="true" size={16} className="transition group-hover:translate-x-1" />
+                  </a>
                 </article>
               </Reveal>
             );
@@ -59,11 +89,11 @@ export function ServicesSection() {
         </div>
 
         <Reveal delay={0.12}>
-          <div className="mt-8 flex flex-col gap-4 rounded-lg bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-8 flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-3">
               <ClipboardList aria-hidden="true" size={22} className="mt-1 text-plumbing-orange" />
               <p className="max-w-3xl text-sm leading-6 text-slate-700">
-                Not sure which category fits? Call through what is happening and JK Plumbing Solutions can help work out the practical next step.
+                Not sure which pathway fits? Call through what is happening, where the job is and whether it is urgent.
               </p>
             </div>
             <a

@@ -1,27 +1,47 @@
-import Image from "next/image";
-import { ArrowRight, CheckCircle2, ClipboardCheck, MapPin, Phone, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  Droplets,
+  Flame,
+  Hammer,
+  Phone,
+  ShieldCheck,
+  Thermometer,
+  Wrench,
+} from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { site } from "@/lib/site";
 
+const jobCards = [
+  { title: "Blocked drain", detail: "Water backing up", icon: Droplets },
+  { title: "Hot water issue", detail: "Running cold", icon: Thermometer },
+  { title: "Leak repair", detail: "Tap, pipe or fixture", icon: Wrench },
+  { title: "Renovation fit-off", detail: "Bathroom, kitchen, laundry", icon: Hammer },
+  { title: "Gas installation", detail: "Licensed connection work", icon: Flame },
+  { title: "Commercial maintenance", detail: "Repairs and site work", icon: Building2 },
+] as const;
+
 export function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden bg-navy-950 text-white">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-plumbing-blue to-transparent" />
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 sm:py-16 lg:grid-cols-[0.98fr_1.02fr] lg:px-8 lg:py-24">
-        <Reveal className="flex flex-col justify-center">
-          <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Campbelltown plumber for repairs, renovations and maintenance done properly.
+    <section id="home" className="blue-radial relative overflow-hidden text-white">
+      <div className="brand-grid absolute inset-0 opacity-60" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-plumbing-blue via-plumbing-orange to-plumbing-blue" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 sm:py-16 lg:min-h-[760px] lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:px-8 lg:py-24">
+        <Reveal className="mobile-safe-width flex min-w-0 flex-col justify-center lg:max-w-none">
+          <h1 className="max-w-full text-[2rem] font-semibold leading-[1.1] text-white sm:max-w-4xl sm:text-5xl lg:text-6xl">
+            Blocked, leaking, cold or building? Call a Campbelltown plumber who gives you a straight answer.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            When plumbing interrupts the day, you want a clear answer, a fair conversation
-            about the work and no shortcut fix. JK Plumbing Solutions handles licensed
-            residential, commercial and maintenance plumbing across Sydney.
+          <p className="mt-6 max-w-full text-base leading-7 text-slate-300 sm:max-w-2xl sm:text-xl sm:leading-8">
+            JK Plumbing Solutions handles repairs, maintenance, hot water, gas, renovations
+            and new-build plumbing across Sydney. Call James and talk through what is happening.
+            You will get a practical next step, not a sales script.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href={site.phone.href}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-plumbing-orange px-5 py-3 text-base font-semibold text-white transition hover:bg-orange-600"
+              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-plumbing-orange px-6 py-4 text-base font-semibold text-white shadow-xl shadow-black/20 transition hover:bg-orange-600"
             >
               <Phone aria-hidden="true" size={20} />
               Call {site.phone.display}
@@ -35,94 +55,89 @@ export function HeroSection() {
             </a>
           </div>
 
-          <p className="mt-4 text-sm leading-6 text-slate-300">
-            For blocked drains, leaks, hot water issues or planned fit-offs, calling is the fastest way to get the job moving.
-          </p>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-              <ShieldCheck aria-hidden="true" size={18} className="text-plumbing-blue" />
-              <p className="mt-2 text-xs font-medium uppercase text-slate-400">Licence</p>
-              <p className="mt-1 text-sm font-semibold text-white">{site.plumbingLicence}</p>
-            </div>
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-              <CheckCircle2 aria-hidden="true" size={18} className="text-plumbing-blue" />
-              <p className="mt-2 text-xs font-medium uppercase text-slate-400">ABN</p>
-              <p className="mt-1 text-sm font-semibold text-white">{site.abn}</p>
-            </div>
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-              <MapPin aria-hidden="true" size={18} className="text-plumbing-orange" />
-              <p className="mt-2 text-xs font-medium uppercase text-slate-400">Local base</p>
-              <p className="mt-1 text-sm font-semibold text-white">{site.location}</p>
-            </div>
+          <div className="mt-7 rounded-xl border border-white/10 bg-white/[0.07] p-3 shadow-xl shadow-black/10 backdrop-blur">
+            <ul className="grid gap-2 text-sm text-slate-100 sm:grid-cols-2">
+              {site.trustItems.map((item) => (
+                <li key={item} className="flex items-center gap-2 rounded-lg bg-white/[0.06] px-3 py-2">
+                  {item.includes("Licence") ? (
+                    <ShieldCheck aria-hidden="true" size={16} className="text-plumbing-blue" />
+                  ) : (
+                    <CheckCircle2 aria-hidden="true" size={16} className="text-plumbing-orange" />
+                  )}
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} className="relative">
-          <div className="relative grid gap-3 sm:block sm:min-h-[560px]">
-            <div className="relative min-h-[330px] overflow-hidden rounded-lg border border-white/10 bg-charcoal-900 shadow-2xl shadow-black/30 sm:absolute sm:right-0 sm:top-6 sm:h-[500px] sm:w-[78%]">
-              <Image
-                src="/images/sink%20and%20tap.jpg"
-                alt="Completed kitchen sink and tap plumbing work"
-                fill
-                priority
-                sizes="(min-width: 1024px) 36vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/78 via-navy-950/5 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-navy-950/88 p-4 backdrop-blur">
-                <p className="text-sm font-semibold text-white">Licensed work for homes, businesses and project sites.</p>
-                <p className="mt-1 text-sm text-slate-300">Repairs, maintenance, renovations, fit-offs and new builds.</p>
+        <Reveal delay={0.08} className="mobile-safe-width relative min-w-0 lg:max-w-none">
+          <div className="relative min-h-[620px] lg:min-h-[660px]">
+            <div className="absolute inset-x-3 top-8 h-[540px] rounded-[32px] border border-white/10 bg-navy-950/90 shadow-2xl shadow-black/40 backdrop-blur sm:inset-x-8 lg:inset-x-10" />
+            <div className="absolute left-0 top-0 w-[78%] rounded-2xl border border-white/10 bg-charcoal-900 p-5 shadow-2xl shadow-black/30 sm:w-[58%]">
+              <div>
+                <p className="text-sm font-semibold text-plumbing-blue">Live job board</p>
+                <p className="mt-2 text-2xl font-semibold leading-tight">What needs sorting?</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  Start with the problem. The trade words can come later.
+                </p>
               </div>
             </div>
 
-            <div className="relative min-h-[210px] overflow-hidden rounded-lg border border-white/10 bg-charcoal-900 shadow-xl sm:absolute sm:left-0 sm:top-0 sm:h-[245px] sm:w-[45%]">
-              <Image
-                src="/images/tech.JPEG"
-                alt="Drain inspection equipment used during plumbing work"
-                fill
-                sizes="(min-width: 1024px) 22vw, 80vw"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="rounded-lg border border-white/10 bg-white p-5 text-navy-950 shadow-xl sm:absolute sm:bottom-6 sm:left-8 sm:w-[310px]">
-              <p className="text-sm font-semibold text-plumbing-blue">Best first step</p>
-              <p className="mt-2 text-xl font-semibold leading-tight">Call and describe what is happening.</p>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                A quick call is usually enough to work out the right next move.
-              </p>
+            <div className="absolute right-0 top-20 z-20 w-[72%] rounded-2xl bg-white p-5 text-navy-950 shadow-2xl shadow-black/35 sm:w-[52%]">
+              <div className="flex items-start gap-4">
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-plumbing-orange text-white">
+                  <Phone aria-hidden="true" size={25} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-plumbing-blue">Call James</p>
+                  <p className="mt-1 text-3xl font-semibold leading-none">{site.phone.display}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    Explain what is blocked, leaking, cold or being built.
+                  </p>
+                </div>
+              </div>
               <a
                 href={site.phone.href}
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-plumbing-orange"
+                className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-navy-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-charcoal-900"
               >
-                <Phone aria-hidden="true" size={17} />
-                {site.phone.display}
+                <Phone aria-hidden="true" size={18} />
+                Tap or click to call
               </a>
             </div>
 
-            <div className="rounded-lg border border-white/10 bg-navy-950/90 p-4 shadow-xl backdrop-blur sm:absolute sm:right-6 sm:top-0 sm:w-[245px]">
-              <div className="flex items-center gap-3">
-                <ClipboardCheck aria-hidden="true" size={20} className="text-plumbing-orange" />
-                <p className="text-sm font-semibold text-white">Clear process</p>
-              </div>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                Find the issue, explain the options and complete the work properly.
-              </p>
+            <div className="absolute bottom-4 left-0 right-0 grid gap-3 sm:grid-cols-2">
+              {jobCards.map((job, index) => {
+                const Icon = job.icon;
+
+                return (
+                  <div
+                    key={job.title}
+                    className={
+                      index === 0
+                        ? "translate-y-[-18px] rounded-2xl border border-plumbing-blue/40 bg-plumbing-blue p-4 text-white shadow-2xl shadow-blue-950/30"
+                        : index === 3
+                          ? "translate-y-[14px] rounded-2xl border border-white/10 bg-white/[0.1] p-4 text-white shadow-xl shadow-black/20 backdrop-blur"
+                          : "rounded-2xl border border-white/10 bg-white/[0.08] p-4 text-white shadow-xl shadow-black/20 backdrop-blur"
+                    }
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-navy-950">
+                        <Icon aria-hidden="true" size={20} />
+                      </div>
+                      <div>
+                        <p className="font-semibold leading-tight">{job.title}</p>
+                        <p className={index === 0 ? "mt-1 text-sm text-blue-50" : "mt-1 text-sm text-slate-300"}>
+                          {job.detail}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </Reveal>
-      </div>
-
-      <div className="border-y border-white/10 bg-charcoal-950/65">
-        <ul className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-5 gap-y-3 px-4 py-4 text-sm text-slate-200 sm:px-6 lg:px-8">
-          {site.trustItems.map((item) => (
-            <li key={item} className="flex items-center gap-2">
-              <CheckCircle2 aria-hidden="true" size={16} className="text-plumbing-blue" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );

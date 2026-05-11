@@ -1,0 +1,21 @@
+<svg width="60" height="80" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Water Droplet -->
+  <path d="M 30 5 C 20 15, 15 25, 15 35 C 15 50, 21.5 62, 30 62 C 38.5 62, 45 50, 45 35 C 45 25, 40 15, 30 5 Z"
+        fill="url(#dropletGradient)"/>
+
+  <!-- Subtle highlight -->
+  <ellipse cx="26" cy="25" rx="6" ry="9" fill="white" opacity="0.25"/>
+  <ellipse cx="25" cy="22" rx="2.5" ry="4" fill="white" opacity="0.4"/>
+
+  <!-- Subtle shadow/depth -->
+  <path d="M 30 5 C 33.5 11, 39 20, 42.5 30 C 44 37, 45 35, 45 35 C 45 25, 40 15, 30 5 Z"
+        fill="#001f3f" opacity="0.15"/>
+
+  <defs>
+    <linearGradient id="dropletGradient" x1="30" y1="5" x2="30" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+</svg>

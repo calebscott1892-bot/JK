@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "JK Plumbing Solutions | Campbelltown Plumber Servicing Sydney",
+    default: "JK Plumbing Solutions | Campbelltown Plumber For Sydney Jobs",
     template: "%s | JK Plumbing Solutions",
   },
   description:
-    "Licensed plumbing solutions across Campbelltown and Sydney. Blocked drains, hot water, gas, maintenance, renovations, new builds, emergency repairs and commercial plumbing.",
+    "Campbelltown based plumber servicing Sydney. Call JK Plumbing Solutions for blocked drains, leaks, hot water, gas, renovations, new builds and commercial maintenance.",
   alternates: {
     canonical: "/",
   },
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   creator: site.legalName,
   publisher: site.legalName,
   openGraph: {
-    title: "JK Plumbing Solutions | Campbelltown Plumber Servicing Sydney",
+    title: "JK Plumbing Solutions | Campbelltown Plumber For Sydney Jobs",
     description:
-      "Reliable, transparent and professional plumbing solutions across Campbelltown and Sydney.",
+      "Blocked, leaking, cold or building? Call a licensed Campbelltown plumber for a practical next step.",
     url: site.url,
     siteName: site.name,
     locale: "en_AU",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "JK Plumbing Solutions",
-    description: "Licensed plumbing solutions across Campbelltown and Sydney.",
+    description: "Campbelltown based plumber servicing Sydney repairs, maintenance and project work.",
   },
   robots: {
     index: true,
