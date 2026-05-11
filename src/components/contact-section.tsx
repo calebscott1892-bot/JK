@@ -102,6 +102,8 @@ export function ContactSection() {
               action={`mailto:${site.email}`}
               method="post"
               encType="text/plain"
+              autoComplete="off"
+              suppressHydrationWarning
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl shadow-black/20 sm:p-7"
             >
             <div className="mb-6">
@@ -111,47 +113,59 @@ export function ContactSection() {
               </p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm font-semibold text-navy-950">
-                Name
+              <div className="grid gap-2 text-sm font-semibold text-navy-950">
+                <label htmlFor="contact-name">Name</label>
                 <input
+                  id="contact-name"
                   name="name"
                   autoComplete="name"
                   className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                   placeholder="Your name"
                 />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-navy-950">
-                Phone
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-navy-950">
+                <label htmlFor="contact-phone">Phone</label>
                 <input
+                  id="contact-phone"
                   name="phone"
                   type="tel"
                   autoComplete="tel"
                   className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                   placeholder="Your phone number"
                 />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-navy-950">
-                Email
+              </div>
+              <div
+                className="grid gap-2 text-sm font-semibold text-navy-950"
+                suppressHydrationWarning
+              >
+                <label htmlFor="contact-email">Email</label>
                 <input
+                  id="contact-email"
                   name="email"
                   type="email"
-                  autoComplete="email"
+                  autoComplete="off"
+                  data-1p-ignore="true"
+                  data-form-type="other"
+                  data-lpignore="true"
+                  suppressHydrationWarning
                   className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                   placeholder="you@example.com"
                 />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-navy-950">
-                Suburb
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-navy-950">
+                <label htmlFor="contact-suburb">Suburb</label>
                 <input
+                  id="contact-suburb"
                   name="suburb"
                   autoComplete="address-level2"
                   className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                   placeholder="Job suburb"
                 />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-navy-950 sm:col-span-2">
-                Service needed
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-navy-950 sm:col-span-2">
+                <label htmlFor="contact-service">Service needed</label>
                 <select
+                  id="contact-service"
                   name="service"
                   className="min-h-12 rounded-lg border border-slate-300 bg-white px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                   defaultValue=""
@@ -165,18 +179,19 @@ export function ContactSection() {
                     </option>
                   ))}
                 </select>
-              </label>
+              </div>
             </div>
 
-            <label className="mt-5 grid gap-2 text-sm font-semibold text-navy-950">
-              Message
+            <div className="mt-5 grid gap-2 text-sm font-semibold text-navy-950">
+              <label htmlFor="contact-message">Message</label>
               <textarea
+                id="contact-message"
                 name="message"
                 rows={5}
                 className="rounded-lg border border-slate-300 px-4 py-3 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
                 placeholder="Tell us what is happening, where the job is located, and when you need help."
               />
-            </label>
+            </div>
 
             <button
               type="submit"

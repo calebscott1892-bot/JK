@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "JK Plumbing Solutions | Campbelltown Plumber For Sydney Jobs",
+    default: "JK Plumbing Solutions | Campbelltown Plumber Servicing Sydney",
     template: "%s | JK Plumbing Solutions",
   },
   description:
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   creator: site.legalName,
   publisher: site.legalName,
   openGraph: {
-    title: "JK Plumbing Solutions | Campbelltown Plumber For Sydney Jobs",
+    title: "JK Plumbing Solutions | Campbelltown Plumber Servicing Sydney",
     description:
       "Blocked, leaking, cold or building? Call a licensed Campbelltown plumber for a practical next step.",
     url: site.url,

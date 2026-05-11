@@ -1,47 +1,75 @@
-import { Phone } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/95 text-white backdrop-blur">
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex items-center gap-3" aria-label="JK Plumbing Solutions home">
-          <span className="flex size-10 items-center justify-center rounded-lg bg-white text-sm font-bold text-navy-950">
-            JK
-          </span>
-          <span>
-            <span className="block text-base font-semibold leading-tight sm:text-lg">JK Plumbing Solutions</span>
-            <span className="hidden text-xs font-medium text-slate-300 sm:block">Campbelltown based | Sydney-wide</span>
+    <header className="site-header sticky top-0 z-50 overflow-hidden border-b border-white/10 bg-[#06111d]/92 text-white shadow-[0_18px_40px_rgba(0,0,0,0.2)] backdrop-blur-xl">
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-plumbing-blue to-transparent opacity-80"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -left-20 top-0 h-24 w-72 rounded-full bg-plumbing-blue/15 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto flex min-h-[78px] max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
+        <a
+          href="#home"
+          className="header-logo-slot group flex min-w-0 items-center"
+          aria-label="JK Plumbing Solutions home"
+        >
+          <span className="header-logo-target relative flex h-[56px] w-[138px] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50 sm:h-[62px] sm:w-[152px] lg:h-[66px] lg:w-[164px]">
+            <Image
+              src="/brand/jk-logo-header.png"
+              alt="JK Plumbing Solutions"
+              width={1384}
+              height={700}
+              preload
+              sizes="(max-width: 640px) 138px, (max-width: 1024px) 152px, 164px"
+              className="h-full w-full object-contain"
+            />
           </span>
         </a>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
+        <nav
+          aria-label="Main navigation"
+          className="header-nav hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-inner shadow-black/20 lg:flex"
+        >
           {site.nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-slate-200 transition hover:text-white"
+              className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-200 transition hover:bg-plumbing-blue/20 hover:text-white"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <a
-          href={site.phone.href}
-          className="hidden items-center gap-2 rounded-lg bg-plumbing-orange px-4 py-3 text-sm font-semibold text-white transition hover:bg-orange-600 md:flex"
-        >
-          <Phone aria-hidden="true" size={18} />
-          Call {site.phone.display}
-        </a>
+        <div className="flex items-center gap-2">
+          <span className="hidden items-center gap-2 rounded-full border border-plumbing-blue/25 bg-plumbing-blue/10 px-3 py-2 text-sm font-semibold text-blue-100 xl:inline-flex">
+            <MapPin aria-hidden="true" size={15} />
+            Campbelltown
+          </span>
 
-        <a
-          href={site.phone.href}
-          className="flex size-11 items-center justify-center rounded-lg bg-plumbing-orange text-white md:hidden"
-          aria-label={`Call ${site.phone.display}`}
-        >
-          <Phone aria-hidden="true" size={20} />
-        </a>
+          <a
+            href={site.phone.href}
+            className="header-call hidden min-h-12 items-center gap-2 rounded-xl bg-plumbing-orange px-4 py-3 text-sm font-bold text-white shadow-lg shadow-orange-950/25 transition hover:-translate-y-0.5 hover:bg-orange-600 md:inline-flex"
+          >
+            <Phone aria-hidden="true" size={18} />
+            {site.phone.display}
+          </a>
+
+          <a
+            href={site.phone.href}
+            className="header-call flex size-12 shrink-0 items-center justify-center rounded-xl bg-plumbing-orange text-white shadow-lg shadow-orange-950/30 md:hidden"
+            aria-label={`Call ${site.phone.display}`}
+          >
+            <Phone aria-hidden="true" size={20} />
+          </a>
+        </div>
       </div>
     </header>
   );
