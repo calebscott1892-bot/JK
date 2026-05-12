@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Phone } from "lucide-react";
+import { HeaderNav } from "@/components/header-nav";
 import { IntroReplayButton } from "@/components/intro-replay-button";
 import { site } from "@/lib/site";
 
@@ -17,7 +18,10 @@ export function SiteHeader() {
             className="header-logo-slot group flex shrink-0 items-center"
             aria-label="JK Plumbing Solutions home"
           >
-            <span className="header-logo-target relative flex aspect-[1320/629] w-[clamp(8.25rem,32vw,10.75rem)] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50">
+            <span
+              className="header-logo-target relative flex aspect-[1320/629] w-[clamp(8.25rem,32vw,10.75rem)] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-slate-400/70 bg-[#d1d5db] p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50"
+              style={{ backgroundColor: "#d1d5db" }}
+            >
               <Image
                 src="/brand/jk-logo-cropped.png"
                 alt="JK Plumbing Solutions"
@@ -32,20 +36,7 @@ export function SiteHeader() {
           <IntroReplayButton />
         </div>
 
-        <nav
-          aria-label="Main navigation"
-          className="header-nav hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-inner shadow-black/20 lg:flex"
-        >
-          {site.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-200 transition hover:bg-plumbing-blue/20 hover:text-white"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <HeaderNav items={site.nav} />
 
         <div className="flex items-center gap-2">
           <span className="hidden rounded-full border border-plumbing-blue/25 bg-plumbing-blue/10 px-3 py-2 text-sm font-semibold text-blue-100 xl:inline-flex">

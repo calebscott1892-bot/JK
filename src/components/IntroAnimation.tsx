@@ -89,7 +89,7 @@ export function IntroAnimation() {
     timelineRef.current = null;
 
     try {
-      window.localStorage.setItem(INTRO_STORAGE_KEY, "true");
+      window.sessionStorage.setItem(INTRO_STORAGE_KEY, "true");
     } catch {
       // Storage can be unavailable in private or restricted browser contexts.
     }
@@ -127,7 +127,7 @@ export function IntroAnimation() {
     window.addEventListener("jk:intro-replay", replayIntro);
 
     try {
-      if (window.localStorage.getItem(INTRO_STORAGE_KEY) === "true") {
+      if (window.sessionStorage.getItem(INTRO_STORAGE_KEY) === "true") {
         document.documentElement.dataset.introState = "complete";
       } else {
         scheduleStartIntro();
@@ -727,6 +727,15 @@ export function IntroAnimation() {
         .addLabel("logoMergeStart", `freeFallStart+=${fallDuration}`)
         .addLabel("land", "logoMergeStart")
         .to(
+          logoZoomWrap,
+          {
+            "--logo-opacity": "1",
+            duration: 0.22,
+            ease: "sine.out",
+          },
+          "logoMergeStart-=0.2",
+        )
+        .to(
           dropletWrap,
           {
             "--droplet-fall-y": `${fallDistance}px`,
@@ -1014,7 +1023,7 @@ export function IntroAnimation() {
     "--logo-x": "0px",
     "--logo-y": "0px",
     "--logo-scale": "1",
-    "--logo-opacity": "1",
+    "--logo-opacity": "0",
   };
 
   const wrenchDebugValues = [
@@ -1377,9 +1386,9 @@ export function IntroAnimation() {
               <div
                 className="intro-logo-card relative h-full w-full border shadow-[0_22px_44px_rgba(0,0,0,0.28)]"
                 style={{
-                  background: "rgba(255,255,255,var(--logo-card-bg-opacity))",
+                  background: "rgba(229,231,235,var(--logo-card-bg-opacity))",
                   borderColor:
-                    "rgba(255,255,255,var(--logo-card-border-opacity))",
+                    "rgba(203,213,225,var(--logo-card-border-opacity))",
                   borderRadius: "var(--logo-card-radius)",
                   boxSizing: "border-box",
                   padding: "var(--logo-card-padding)",
@@ -1406,20 +1415,20 @@ export function IntroAnimation() {
                 />
               ) : null}
               <Image
-                src="/brand/jk-logo-cropped.png"
+                src="/brand/jk-logo-drop-hole.png"
                 alt="JK Plumbing Solutions"
                 fill
                 preload
                 sizes="(max-width: 640px) 88vw, 560px"
-                className="relative z-0 object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
+                className="relative z-0 object-cover drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
               />
               <Image
-                src="/brand/jk-logo-cropped.png"
+                src="/brand/jk-logo-transparent.png"
                 alt=""
                 fill
                 preload
                 sizes="(max-width: 640px) 88vw, 560px"
-                className="intro-logo-solid pointer-events-none absolute inset-0 z-10 object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
+                className="intro-logo-solid pointer-events-none absolute inset-0 z-10 object-cover drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
                 style={{
                   opacity: "var(--solid-logo-opacity)",
                   willChange: "opacity",
