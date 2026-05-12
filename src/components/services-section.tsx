@@ -1,7 +1,27 @@
+import Image from "next/image";
 import { ArrowRight, Building2, Check, ClipboardList, Home, Siren, Wrench } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
+
+const serviceGroupPhotos = [
+  {
+    src: "/images/process%20toilet.JPEG",
+    alt: "Toilet plumbing maintenance work in progress",
+  },
+  {
+    src: "/images/shower%20head.JPEG",
+    alt: "Installed shower plumbing fixture",
+  },
+  {
+    src: "/images/bathroom%202.JPEG",
+    alt: "Completed bathroom plumbing renovation",
+  },
+  {
+    src: "/images/double%20sink.JPEG",
+    alt: "Double vanity plumbing installation",
+  },
+] as const;
 
 const serviceGroupIcons = [
   Siren,
@@ -25,6 +45,8 @@ export function ServicesSection() {
         <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:auto-rows-fr">
           {site.serviceGroups.map((group, index) => {
             const Icon = serviceGroupIcons[index];
+            const photo = serviceGroupPhotos[index];
+            const isDark = index === 0 || index === 3;
 
             return (
               <Reveal
@@ -43,6 +65,28 @@ export function ServicesSection() {
                           : "group flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl bg-charcoal-900 p-7 text-white shadow-2xl shadow-slate-300/50"
                   }
                 >
+                  <div
+                    className={
+                      isDark
+                        ? "relative -mx-2 -mt-2 mb-6 h-40 overflow-hidden rounded-lg border border-white/10 bg-slate-900"
+                        : "relative -mx-2 -mt-2 mb-6 h-40 overflow-hidden rounded-lg border border-slate-100 bg-slate-100"
+                    }
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                    />
+                    <div
+                      className={
+                        isDark
+                          ? "absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-charcoal-950/5 to-transparent"
+                          : "absolute inset-0 bg-gradient-to-t from-white/45 via-transparent to-transparent"
+                      }
+                    />
+                  </div>
                   <div className="flex items-start justify-between gap-4">
                     <div
                       className={

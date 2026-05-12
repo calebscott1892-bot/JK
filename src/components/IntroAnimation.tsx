@@ -7,6 +7,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+const INTRO_STORAGE_KEY = "jk-plumbing:intro-complete:v1";
 const DEBUG_ALIGNMENT = false;
 const DEBUG_LOGO_TARGET = false;
 
@@ -76,22 +77,68 @@ type IntroSceneStyle = CSSProperties & {
 export function IntroAnimation() {
   const rootRef = useRef<HTMLElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [runId, setRunId] = useState(0);
 
   const completeIntro = useCallback(() => {
     timelineRef.current?.kill();
     timelineRef.current = null;
 
+    try {
+      window.localStorage.setItem(INTRO_STORAGE_KEY, "true");
+    } catch {
+      // Storage can be unavailable in private or restricted browser contexts.
+    }
+
     document.documentElement.dataset.introState = "complete";
 
     const siteTargets = document.querySelectorAll(
-      ".site-header, .header-logo-slot, .header-logo-target, .header-nav, .header-nav a, .header-call, .hero-content",
+      ".site-header, .header-logo-slot, .header-logo-target, .intro-replay-button, .header-nav, .header-nav a, .header-call, .hero-content",
     );
 
     gsap.killTweensOf(siteTargets);
     gsap.set(siteTargets, { clearProps: "all" });
     setIsVisible(false);
   }, []);
+
+  const startIntro = useCallback(() => {
+    timelineRef.current?.kill();
+    timelineRef.current = null;
+    document.documentElement.dataset.introState = "active";
+    setRunId((current) => current + 1);
+    setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    let frameId: number | null = null;
+    const replayIntro = () => {
+      startIntro();
+    };
+    const scheduleStartIntro = () => {
+      frameId = window.requestAnimationFrame(() => {
+        startIntro();
+      });
+    };
+
+    window.addEventListener("jk:intro-replay", replayIntro);
+
+    try {
+      if (window.localStorage.getItem(INTRO_STORAGE_KEY) === "true") {
+        document.documentElement.dataset.introState = "complete";
+      } else {
+        scheduleStartIntro();
+      }
+    } catch {
+      scheduleStartIntro();
+    }
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("jk:intro-replay", replayIntro);
+    };
+  }, [startIntro]);
 
   useEffect(() => {
     if (!isVisible) {
@@ -180,6 +227,7 @@ export function IntroAnimation() {
         !solidLogo ||
         !logoMark
       ) {
+        completeIntro();
         return;
       }
 
@@ -188,13 +236,34 @@ export function IntroAnimation() {
         return;
       }
 
+      const clamp = (value: number, min: number, max: number) =>
+        Math.min(max, Math.max(min, value));
+      const isUsableRect = (rect: DOMRect) =>
+        Number.isFinite(rect.width) &&
+        Number.isFinite(rect.height) &&
+        rect.width > 8 &&
+        rect.height > 8;
       const rootRect = root.getBoundingClientRect();
       const introLogoRect = logoHandoffWrap.getBoundingClientRect();
       const headerLogoRect = headerLogoTarget.getBoundingClientRect();
-      const introLogoHeight = introLogoRect.height || 500;
-      const handoffScale = Math.max(
-        0.1,
-        Math.min(0.18, (headerLogoRect.height / introLogoHeight) * 1.6),
+      const logoMarkRect = logoMark.getBoundingClientRect();
+
+      if (
+        !isUsableRect(rootRect) ||
+        !isUsableRect(introLogoRect) ||
+        !isUsableRect(headerLogoRect)
+      ) {
+        completeIntro();
+        return;
+      }
+
+      const handoffScale = clamp(
+        Math.min(
+          headerLogoRect.width / introLogoRect.width,
+          headerLogoRect.height / introLogoRect.height,
+        ),
+        0.08,
+        0.32,
       );
       const handoffX = Math.round(
         headerLogoRect.left +
@@ -207,7 +276,10 @@ export function IntroAnimation() {
           (introLogoRect.top + introLogoRect.height * 0.5),
       );
       const dropletStyle = window.getComputedStyle(dropletWrap);
-      const dropletTop = Number.parseFloat(dropletStyle.top);
+      const measuredDropletTop = Number.parseFloat(dropletStyle.top);
+      const dropletTop = Number.isFinite(measuredDropletTop)
+        ? measuredDropletTop
+        : rootRect.height * 0.42;
       const dropletWidth =
         dropletWrap.getBoundingClientRect().width ||
         Number.parseFloat(dropletStyle.width) ||
@@ -222,13 +294,12 @@ export function IntroAnimation() {
       const fallDuration =
         Number.parseFloat(rootStyle.getPropertyValue("--fall-duration")) || 2.25;
       const fallDistance = Math.round(
-        Math.min(270, Math.max(190, rootRect.height * 0.29)),
+        clamp(rootRect.height * 0.3, 140, 270),
       );
       const fallCameraY = -Math.round(
-        Math.min(132, Math.max(84, rootRect.height * 0.14)),
+        clamp(rootRect.height * 0.13, 52, 132),
       );
       const landingCenterY = formedDropletCenterY + fallDistance + fallCameraY;
-      const logoMarkRect = logoMark.getBoundingClientRect();
       const logoMarkCenterX =
         logoMarkRect.left - rootRect.left + logoMarkRect.width * 0.5;
       const logoMarkCenterY =
@@ -859,7 +930,7 @@ export function IntroAnimation() {
       timelineRef.current = null;
       context.revert();
     };
-  }, [completeIntro, isVisible]);
+  }, [completeIntro, isVisible, runId]);
 
   if (!isVisible) {
     return null;
@@ -867,11 +938,11 @@ export function IntroAnimation() {
 
   const sceneStyle: IntroSceneStyle = {
     "--drop-axis-x": "50vw",
-    "--leak-y": "clamp(13.75rem, 29dvh, 15.75rem)",
+    "--leak-y": "clamp(8rem, 25dvh, 15.75rem)",
     "--nut-x": "var(--drop-axis-x)",
     "--nut-y": "calc(var(--leak-y) - var(--pipe-width) * 0.083)",
-    "--pipe-width": "max(44rem, calc(105vw))",
-    "--wrench-width": "clamp(13rem, 27vw, 22rem)",
+    "--pipe-width": "clamp(30rem, 116vw, 74rem)",
+    "--wrench-width": "clamp(9rem, min(29vw, 27dvh), 22rem)",
     "--wrench-x": "calc(var(--nut-x) - var(--wrench-origin-x) + 0px)",
     "--wrench-y": "calc(var(--nut-y) - var(--wrench-origin-y) + 0px)",
     "--wrench-rotation": "-50deg",
@@ -890,7 +961,7 @@ export function IntroAnimation() {
     "--pipe-react-rotation": "0deg",
     "--seep-opacity": "0",
     "--seep-scale": "0.15",
-    "--fall-focus-y": "clamp(19rem, 43dvh, 24rem)",
+    "--fall-focus-y": "clamp(12.5rem, 42dvh, 24rem)",
     "--falling-drop-y": "var(--fall-focus-y)",
     "--logo-drop-y": "49.7%",
     "--logo-drop-scale": "1.08",
@@ -920,8 +991,8 @@ export function IntroAnimation() {
     "--landing-glow-opacity": "0",
     "--landing-glow-scale": "0.72",
     "--solid-logo-opacity": "0",
-    "--logo-top": "clamp(24rem, 53dvh, 30rem)",
-    "--logo-width": "min(92vw, 560px)",
+    "--logo-top": "clamp(15.75rem, 53dvh, 30rem)",
+    "--logo-width": "clamp(15rem, min(88vw, 58dvh), 35rem)",
     "--logo-x": "0px",
     "--logo-y": "0px",
     "--logo-scale": "1",
@@ -941,8 +1012,8 @@ export function IntroAnimation() {
   return (
     <section
       ref={rootRef}
-      aria-label="JK Plumbing intro visual test"
-      className="intro-overlay fixed inset-0 z-[100] h-dvh w-screen overflow-hidden overscroll-none bg-[#050910] text-white"
+      aria-label="JK Plumbing intro animation"
+      className="intro-overlay fixed inset-0 z-[100] min-h-svh w-screen overflow-hidden overscroll-none bg-[#050910] text-white"
     >
       <div
         className="absolute inset-0 opacity-80"
@@ -971,7 +1042,7 @@ export function IntroAnimation() {
       </button>
 
       <div
-        className="intro-camera relative h-dvh w-screen overflow-hidden"
+          className="intro-camera relative min-h-svh w-screen overflow-hidden"
         style={sceneStyle}
       >
         <div
@@ -1274,7 +1345,7 @@ export function IntroAnimation() {
             style={{
               left: "var(--drop-axis-x)",
               opacity: "var(--logo-opacity)",
-              top: "var(--logo-top)",
+              top: "max(1rem, min(var(--logo-top), calc(100dvh - var(--logo-width) + 2rem)))",
               transform:
                 "translateX(-50%) translate3d(var(--logo-x), var(--logo-y), 0) scale(var(--logo-scale))",
               transformOrigin:
@@ -1314,7 +1385,8 @@ export function IntroAnimation() {
                 alt="JK Plumbing Solutions"
                 width={1320}
                 height={1189}
-                priority
+                preload
+                sizes="(max-width: 640px) 88vw, 560px"
                 className="relative z-0 h-auto w-full object-contain drop-shadow-[0_28px_34px_rgba(0,0,0,0.42)]"
               />
               <Image
@@ -1322,7 +1394,8 @@ export function IntroAnimation() {
                 alt=""
                 width={1320}
                 height={1189}
-                priority
+                preload
+                sizes="(max-width: 640px) 88vw, 560px"
                 className="intro-logo-solid pointer-events-none absolute inset-0 z-10 h-auto w-full object-contain drop-shadow-[0_28px_34px_rgba(0,0,0,0.42)]"
                 style={{
                   opacity: "var(--solid-logo-opacity)",

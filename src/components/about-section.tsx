@@ -8,14 +8,36 @@ export function AboutSection() {
   return (
     <section id="about" className="bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <Reveal className="relative min-h-[430px] overflow-hidden rounded-lg bg-slate-100">
-          <Image
-            src="/images/bathroom.jpg"
-            alt="Finished bathroom plumbing work"
-            fill
-            sizes="(min-width: 1024px) 44vw, 100vw"
-            className="object-cover"
-          />
+        <Reveal className="grid gap-3 sm:grid-cols-[1.1fr_0.9fr] lg:min-h-[520px]">
+          <div className="relative min-h-[430px] overflow-hidden rounded-lg bg-slate-100 sm:min-h-full">
+            <Image
+              src="/images/bathroom.jpg"
+              alt="Finished bathroom plumbing work"
+              fill
+              sizes="(min-width: 1024px) 28vw, (min-width: 640px) 52vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="grid gap-3">
+            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-100">
+              <Image
+                src="/images/bathtub.jpg"
+                alt="Bath mixer plumbing fit-off"
+                fill
+                sizes="(min-width: 1024px) 22vw, (min-width: 640px) 42vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-100">
+              <Image
+                src="/images/double%20sink.JPEG"
+                alt="Double vanity plumbing installation"
+                fill
+                sizes="(min-width: 1024px) 22vw, (min-width: 640px) 42vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
         </Reveal>
 
         <Reveal delay={0.08}>

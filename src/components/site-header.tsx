@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { MapPin, Phone } from "lucide-react";
+import { IntroReplayButton } from "@/components/intro-replay-button";
 import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="site-header sticky top-0 z-50 overflow-hidden border-b border-white/10 bg-[#06111d]/92 text-white shadow-[0_18px_40px_rgba(0,0,0,0.2)] backdrop-blur-xl">
+    <header className="site-header sticky top-0 z-50 overflow-visible border-b border-white/10 bg-[#06111d]/92 text-white shadow-[0_18px_40px_rgba(0,0,0,0.2)] backdrop-blur-xl">
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-plumbing-blue to-transparent opacity-80"
         aria-hidden="true"
@@ -15,23 +16,26 @@ export function SiteHeader() {
       />
 
       <div className="mx-auto flex min-h-[78px] max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
-        <a
-          href="#home"
-          className="header-logo-slot group flex min-w-0 items-center"
-          aria-label="JK Plumbing Solutions home"
-        >
-          <span className="header-logo-target relative flex h-[56px] w-[138px] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50 sm:h-[62px] sm:w-[152px] lg:h-[66px] lg:w-[164px]">
-            <Image
-              src="/brand/jk-logo-header.png"
-              alt="JK Plumbing Solutions"
-              width={1384}
-              height={700}
-              preload
-              sizes="(max-width: 640px) 138px, (max-width: 1024px) 152px, 164px"
-              className="h-full w-full object-contain"
-            />
-          </span>
-        </a>
+        <div className="flex shrink-0 items-center gap-2">
+          <a
+            href="#home"
+            className="header-logo-slot group flex shrink-0 items-center"
+            aria-label="JK Plumbing Solutions home"
+          >
+            <span className="header-logo-target relative flex h-[clamp(3.25rem,14vw,4.125rem)] w-[clamp(7.75rem,34vw,10.25rem)] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50">
+              <Image
+                src="/brand/jk-logo-header.png"
+                alt="JK Plumbing Solutions"
+                width={1384}
+                height={700}
+                preload
+                sizes="(max-width: 640px) 34vw, (max-width: 1024px) 152px, 164px"
+                className="h-full w-full object-contain"
+              />
+            </span>
+          </a>
+          <IntroReplayButton />
+        </div>
 
         <nav
           aria-label="Main navigation"

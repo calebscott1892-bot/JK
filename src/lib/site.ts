@@ -171,16 +171,40 @@ export const site = {
   ],
   workPhotos: [
     {
-      title: "Drain investigation",
-      description: "Equipment-led checks for drainage issues.",
+      title: "Drain camera checks",
+      description: "Equipment-led checks before drainage work is pushed further.",
       src: "/images/tech.JPEG",
       alt: "Drain inspection equipment used on a plumbing job",
+    },
+    {
+      title: "Inside the line",
+      description: "Camera footage used to understand what is happening underground.",
+      src: "/images/IMG_7557.JPEG",
+      alt: "Drain camera screen showing the inside of a pipe",
     },
     {
       title: "Bathroom fit-offs",
       description: "Finished plumbing for bathroom renovation work.",
       src: "/images/bathroom.jpg",
       alt: "Completed bathroom plumbing fit-off",
+    },
+    {
+      title: "Finished bathroom",
+      description: "Clean fixture placement and fit-off detail after renovation work.",
+      src: "/images/bathroom%202.JPEG",
+      alt: "Finished bathroom with bathtub, vanity and toilet",
+    },
+    {
+      title: "Bath mixer install",
+      description: "Fixture installation around finished tile and bath work.",
+      src: "/images/bathtub.jpg",
+      alt: "Installed bath mixer and bathtub plumbing",
+    },
+    {
+      title: "Shower fixtures",
+      description: "Shower plumbing completed against finished bathroom tiling.",
+      src: "/images/shower%20head.JPEG",
+      alt: "Installed shower head and mixer in a tiled bathroom",
     },
     {
       title: "Kitchen plumbing",
@@ -201,10 +225,22 @@ export const site = {
       alt: "Toilet and sink plumbing installation",
     },
     {
+      title: "Toilet maintenance",
+      description: "Practical access, cleaning and repair work where issues start.",
+      src: "/images/process%20toilet.JPEG",
+      alt: "Toilet plumbing maintenance in progress",
+    },
+    {
       title: "New work and maintenance",
       description: "Plumbing support for homes, businesses and projects.",
       src: "/images/double%20sink.JPEG",
       alt: "Double sink plumbing work",
+    },
+    {
+      title: "Tap repair",
+      description: "Water flow checks and outdoor fixture repair work.",
+      src: "/images/tap.JPEG",
+      alt: "Outdoor tap running water into a bucket during repair work",
     },
   ],
   serviceAreas: [

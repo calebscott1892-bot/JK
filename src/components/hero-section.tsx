@@ -112,6 +112,7 @@ export function HeroSection() {
                   src="/images/tech.JPEG"
                   alt="Drain inspection camera used on a plumbing job"
                   fill
+                  preload
                   sizes="(max-width: 1024px) 92vw, 560px"
                   className="object-cover"
                 />
