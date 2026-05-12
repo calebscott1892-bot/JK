@@ -1,4 +1,3 @@
-import { CheckCircle2, Mail, Phone, Send } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
@@ -29,16 +28,14 @@ export function ContactSection() {
               <div className="grid gap-3">
                 <a
                   href={site.phone.href}
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg bg-plumbing-orange px-6 py-4 text-base font-semibold text-white shadow-xl shadow-black/20 transition hover:bg-orange-600"
+                  className="inline-flex min-h-14 items-center justify-center rounded-lg bg-plumbing-orange px-6 py-4 text-base font-semibold text-white shadow-xl shadow-black/20 transition hover:bg-orange-600"
                 >
-                  <Phone aria-hidden="true" size={22} />
                   Call {site.phone.display}
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg border border-white/15 bg-white px-6 py-4 text-base font-semibold text-navy-950 transition hover:bg-slate-100"
+                  className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/15 bg-white px-6 py-4 text-base font-semibold text-navy-950 transition hover:bg-slate-100"
                 >
-                  <Mail aria-hidden="true" size={21} />
                   Email {site.email}
                 </a>
               </div>
@@ -59,9 +56,8 @@ export function ContactSection() {
             <div className="mt-8 space-y-4">
               <a
                 href={site.phone.href}
-                className="flex items-center gap-4 rounded-2xl bg-plumbing-orange p-5 text-white shadow-xl shadow-black/20 transition hover:bg-orange-600"
+                className="block rounded-2xl bg-plumbing-orange p-5 text-white shadow-xl shadow-black/20 transition hover:bg-orange-600"
               >
-                <Phone aria-hidden="true" size={24} />
                 <span>
                   <span className="block text-sm font-medium">Call us today</span>
                   <span className="block text-2xl font-semibold">{site.phone.display}</span>
@@ -69,9 +65,8 @@ export function ContactSection() {
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-5 text-white transition hover:border-plumbing-blue/50"
+                className="block rounded-2xl border border-white/10 bg-white/[0.06] p-5 text-white transition hover:border-plumbing-blue/50"
               >
-                <Mail aria-hidden="true" size={23} className="text-plumbing-blue" />
                 <span>
                   <span className="block text-sm font-medium text-slate-300">Email</span>
                   <span className="block font-semibold">{site.email}</span>
@@ -81,15 +76,15 @@ export function ContactSection() {
                 <p className="font-semibold text-white">Helpful details to include</p>
                 <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
                   <li className="flex gap-2">
-                    <CheckCircle2 aria-hidden="true" size={16} className="mt-1 shrink-0 text-plumbing-blue" />
+                    <span className="mt-3 h-px w-4 shrink-0 bg-plumbing-blue" aria-hidden="true" />
                     What is happening and when it started
                   </li>
                   <li className="flex gap-2">
-                    <CheckCircle2 aria-hidden="true" size={16} className="mt-1 shrink-0 text-plumbing-blue" />
+                    <span className="mt-3 h-px w-4 shrink-0 bg-plumbing-blue" aria-hidden="true" />
                     The job location in Campbelltown, Sydney or surrounds
                   </li>
                   <li className="flex gap-2">
-                    <CheckCircle2 aria-hidden="true" size={16} className="mt-1 shrink-0 text-plumbing-blue" />
+                    <span className="mt-3 h-px w-4 shrink-0 bg-plumbing-blue" aria-hidden="true" />
                     Any photos that make the issue easier to understand
                   </li>
                 </ul>
@@ -195,10 +190,9 @@ export function ContactSection() {
 
             <button
               type="submit"
-              className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-navy-950 px-5 py-3 text-base font-semibold text-white transition hover:bg-charcoal-900 sm:w-auto"
+              className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-navy-950 px-5 py-3 text-base font-semibold text-white transition hover:bg-charcoal-900 sm:w-auto"
             >
               Send job details
-              <Send aria-hidden="true" size={18} />
             </button>
             </form>
           </Reveal>

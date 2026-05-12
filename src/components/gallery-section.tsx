@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Camera } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
@@ -25,9 +24,9 @@ export function GallerySection() {
           <SectionHeading
             align="center"
             inverse
-            label="Gallery"
-            title="Real job photos with the rough edges left in."
-            description="Not a stock-photo wall. A tighter look at drains, fixtures, bathrooms, kitchens and maintenance work using the real image set available now."
+            label="Selected Work"
+            title="Recent plumbing, drainage and fit-off work."
+            description="A practical look at the kinds of jobs handled across homes, businesses and project sites."
           />
         </Reveal>
 
@@ -43,10 +42,9 @@ export function GallerySection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <div className="inline-flex items-center gap-2 rounded-lg bg-plumbing-orange px-3 py-2 text-xs font-semibold text-white">
-                  <Camera aria-hidden="true" size={15} />
-                  Featured job image
-                </div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plumbing-orange">
+                  Featured image
+                </p>
                 <h3 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-white">{featured.title}</h3>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-slate-200">{featured.description}</p>
               </div>
@@ -106,18 +104,6 @@ export function GallerySection() {
           ))}
         </div>
 
-        <Reveal delay={0.12}>
-          <div className="mt-6 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-3">
-            {site.gallerySlots.slice(0, 3).map((slot) => (
-              <div key={slot}>
-                <p className="text-sm font-semibold text-white">{slot}</p>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
-                  Covered through the real job photos above, from rough access work through finished fit-offs.
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   );

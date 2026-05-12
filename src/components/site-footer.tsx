@@ -1,4 +1,3 @@
-import { Camera, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -33,29 +32,24 @@ export function SiteFooter() {
         <div>
           <h2 className="text-sm font-semibold text-white">Contact</h2>
           <div className="mt-4 space-y-3 text-sm">
-            <a href={site.phone.href} className="flex items-center gap-3 transition hover:text-white">
-              <Phone aria-hidden="true" size={17} />
+            <a href={site.phone.href} className="block transition hover:text-white">
               {site.phone.display}
             </a>
-            <a href={`mailto:${site.email}`} className="flex items-center gap-3 transition hover:text-white">
-              <Mail aria-hidden="true" size={17} />
+            <a href={`mailto:${site.email}`} className="block transition hover:text-white">
               {site.email}
             </a>
-            <p className="flex items-center gap-3">
-              <MapPin aria-hidden="true" size={17} />
+            <p>
               {site.serviceArea}
             </p>
-            <p className="flex items-center gap-3">
-              <MessageCircle aria-hidden="true" size={17} />
+            <p>
               {site.social.facebook}
             </p>
             <a
               href={site.social.instagramUrl}
-              className="flex items-center gap-3 transition hover:text-white"
+              className="block transition hover:text-white"
               target="_blank"
               rel="noreferrer"
             >
-              <Camera aria-hidden="true" size={17} />
               {site.social.instagram}
             </a>
           </div>

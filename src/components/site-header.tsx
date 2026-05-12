@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { IntroReplayButton } from "@/components/intro-replay-button";
 import { site } from "@/lib/site";
 
@@ -10,11 +10,6 @@ export function SiteHeader() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-plumbing-blue to-transparent opacity-80"
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute -left-20 top-0 h-24 w-72 rounded-full bg-plumbing-blue/15 blur-3xl"
-        aria-hidden="true"
-      />
-
       <div className="mx-auto flex min-h-[78px] max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
         <div className="flex shrink-0 items-center gap-2">
           <a
@@ -22,14 +17,14 @@ export function SiteHeader() {
             className="header-logo-slot group flex shrink-0 items-center"
             aria-label="JK Plumbing Solutions home"
           >
-            <span className="header-logo-target relative flex h-[clamp(3.25rem,14vw,4.125rem)] w-[clamp(7.75rem,34vw,10.25rem)] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50">
+            <span className="header-logo-target relative flex aspect-[1320/629] w-[clamp(8.25rem,32vw,10.75rem)] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-white/15 bg-white p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50">
               <Image
-                src="/brand/jk-logo-header.png"
+                src="/brand/jk-logo-cropped.png"
                 alt="JK Plumbing Solutions"
-                width={1384}
-                height={700}
+                width={1320}
+                height={629}
                 preload
-                sizes="(max-width: 640px) 34vw, (max-width: 1024px) 152px, 164px"
+                sizes="(max-width: 640px) 32vw, (max-width: 1024px) 152px, 172px"
                 className="h-full w-full object-contain"
               />
             </span>
@@ -53,8 +48,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <span className="hidden items-center gap-2 rounded-full border border-plumbing-blue/25 bg-plumbing-blue/10 px-3 py-2 text-sm font-semibold text-blue-100 xl:inline-flex">
-            <MapPin aria-hidden="true" size={15} />
+          <span className="hidden rounded-full border border-plumbing-blue/25 bg-plumbing-blue/10 px-3 py-2 text-sm font-semibold text-blue-100 xl:inline-flex">
             Campbelltown
           </span>
 

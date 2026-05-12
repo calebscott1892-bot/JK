@@ -125,13 +125,13 @@ export const site = {
     {
       title: "Urgent repairs",
       description:
-        "For plumbing issues that are active, messy or stopping the room from being used.",
+        "For active problems that need a clear make-safe plan or repair.",
       items: ["Blocked drains", "Burst pipes", "Leaks", "Hot water faults"],
     },
     {
       title: "Home plumbing",
       description:
-        "Everyday work around the house, handled with a straight explanation before the fix.",
+        "Everyday fixture, pipework and system work around the house.",
       items: ["Taps and toilets", "Fixtures and pipework", "Hot water systems", "Gas installations"],
     },
     {
@@ -143,7 +143,7 @@ export const site = {
     {
       title: "Commercial and maintenance",
       description:
-        "Practical support for businesses, maintenance jobs, fit-outs and coordinated works.",
+        "Support for businesses, maintenance jobs, fit-outs and coordinated works.",
       items: ["Repairs", "Maintenance", "Fit-out plumbing", "Project coordination"],
     },
   ],
@@ -151,51 +151,39 @@ export const site = {
     {
       title: "Call and explain what is happening",
       description:
-        "Blocked, leaking, cold or being built? Start with the plain version of the problem.",
+        "Start with the plain version of the issue, the suburb and how urgent it is.",
     },
     {
       title: "Send photos if useful",
       description:
-        "A photo of the fixture, drain, system or work area can make the first conversation clearer.",
+        "A photo of the fixture, drain, system or work area can make the first call clearer.",
     },
     {
       title: "Get the next step explained",
       description:
-        "You will know what makes sense next before the job turns into guesswork.",
+        "You will know whether the job needs a visit, a quote, parts or make-safe advice.",
     },
     {
-      title: "Work is completed properly and cleanly",
+      title: "The work is completed cleanly",
       description:
-        "The focus is to finish the plumbing work neatly and without shortcuts.",
+        "The job is carried out with the scope explained before work moves ahead.",
     },
   ],
   workPhotos: [
     {
-      title: "Drain camera checks",
-      description: "Equipment-led checks before drainage work is pushed further.",
+      title: "Drain camera setup",
+      description: "Equipment used to check what is happening before drainage work continues.",
       src: "/images/tech.JPEG",
       alt: "Drain inspection equipment used on a plumbing job",
     },
     {
       title: "Inside the line",
-      description: "Camera footage used to understand what is happening underground.",
+      description: "Camera footage used to understand what is happening inside the pipe.",
       src: "/images/IMG_7557.JPEG",
       alt: "Drain camera screen showing the inside of a pipe",
     },
     {
-      title: "Bathroom fit-offs",
-      description: "Finished plumbing for bathroom renovation work.",
-      src: "/images/bathroom.jpg",
-      alt: "Completed bathroom plumbing fit-off",
-    },
-    {
-      title: "Finished bathroom",
-      description: "Clean fixture placement and fit-off detail after renovation work.",
-      src: "/images/bathroom%202.JPEG",
-      alt: "Finished bathroom with bathtub, vanity and toilet",
-    },
-    {
-      title: "Bath mixer install",
+      title: "Bath mixer fit-off",
       description: "Fixture installation around finished tile and bath work.",
       src: "/images/bathtub.jpg",
       alt: "Installed bath mixer and bathtub plumbing",
@@ -213,34 +201,22 @@ export const site = {
       alt: "Kitchen sink and tap plumbing work",
     },
     {
-      title: "Fixture repairs",
-      description: "Leaks, taps and practical maintenance plumbing.",
-      src: "/images/tap.JPEG",
-      alt: "Outdoor tap plumbing repair",
-    },
-    {
-      title: "Bathroom fixtures",
-      description: "Toilets, basins and finished fixture installs.",
-      src: "/images/toilet%20and%20sink.JPEG",
-      alt: "Toilet and sink plumbing installation",
-    },
-    {
       title: "Toilet maintenance",
       description: "Practical access, cleaning and repair work where issues start.",
       src: "/images/process%20toilet.JPEG",
       alt: "Toilet plumbing maintenance in progress",
     },
     {
-      title: "New work and maintenance",
-      description: "Plumbing support for homes, businesses and projects.",
-      src: "/images/double%20sink.JPEG",
-      alt: "Double sink plumbing work",
-    },
-    {
       title: "Tap repair",
       description: "Water flow checks and outdoor fixture repair work.",
       src: "/images/tap.JPEG",
       alt: "Outdoor tap running water into a bucket during repair work",
+    },
+    {
+      title: "Commercial fixture",
+      description: "Fixture work for business and commercial premises.",
+      src: "/images/urinal.PNG",
+      alt: "Commercial plumbing fixture installation",
     },
   ],
   serviceAreas: [

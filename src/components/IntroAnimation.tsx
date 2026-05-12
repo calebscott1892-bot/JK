@@ -66,6 +66,10 @@ type IntroSceneStyle = CSSProperties & {
   "--landing-glow-opacity": string;
   "--landing-glow-scale": string;
   "--solid-logo-opacity": string;
+  "--logo-card-bg-opacity": string;
+  "--logo-card-border-opacity": string;
+  "--logo-card-padding": string;
+  "--logo-card-radius": string;
   "--logo-top": string;
   "--logo-width": string;
   "--logo-x": string;
@@ -200,6 +204,7 @@ export function IntroAnimation() {
       const logoZoomWrap = root.querySelector<HTMLElement>(".logo-zoom-wrap");
       const logoHandoffWrap =
         root.querySelector<HTMLElement>(".intro-logo-handoff-wrap");
+      const logoCard = root.querySelector<HTMLElement>(".intro-logo-card");
       const solidLogo = root.querySelector<HTMLElement>(".intro-logo-solid");
       const logoMark = root.querySelector<HTMLElement>(".logo-mark");
       const siteHeader = document.querySelector<HTMLElement>(".site-header");
@@ -224,6 +229,7 @@ export function IntroAnimation() {
         !landingGlow ||
         !logoZoomWrap ||
         !logoHandoffWrap ||
+        !logoCard ||
         !solidLogo ||
         !logoMark
       ) {
@@ -848,6 +854,7 @@ export function IntroAnimation() {
             dropletTail,
             motionStreaks,
             landingGlow,
+            logoCard,
             solidLogo,
             logoZoomWrap,
           ],
@@ -885,6 +892,10 @@ export function IntroAnimation() {
             "--landing-glow-opacity": "0",
             "--landing-glow-scale": "1.55",
             "--solid-logo-opacity": "1",
+            "--logo-card-bg-opacity": "0",
+            "--logo-card-border-opacity": "0",
+            "--logo-card-padding": "0px",
+            "--logo-card-radius": "0px",
             "--logo-x": "0px",
             "--logo-y": "0px",
             "--logo-scale": "1",
@@ -894,10 +905,22 @@ export function IntroAnimation() {
         )
         .addLabel("headerHandoffStart", "logoRevealStart+=0.98")
         .to(
+          logoCard,
+          {
+            "--logo-card-bg-opacity": "1",
+            "--logo-card-border-opacity": "0.16",
+            "--logo-card-padding": "6px",
+            "--logo-card-radius": "10px",
+            duration: 0.34,
+            ease: "power2.out",
+          },
+          "headerHandoffStart-=0.16",
+        )
+        .to(
           logoHandoffWrap,
           {
-            duration: 0.72,
-            ease: "power3.inOut",
+            duration: 1.08,
+            ease: "power2.inOut",
             scale: handoffScale,
             x: handoffX,
             y: handoffY,
@@ -905,23 +928,14 @@ export function IntroAnimation() {
           "headerHandoffStart",
         )
         .to(
-          logoHandoffWrap,
-          {
-            autoAlpha: 0,
-            duration: 0.18,
-            ease: "power1.out",
-          },
-          "headerHandoffStart+=0.66",
-        )
-        .to(
           root,
           {
             autoAlpha: 0,
-            duration: 0.36,
-            ease: "power2.out",
+            duration: 0.28,
+            ease: "sine.out",
             onComplete: completeIntro,
           },
-          "headerHandoffStart+=0.76",
+          "headerHandoffStart+=1.04",
         );
     }, root);
 
@@ -991,8 +1005,12 @@ export function IntroAnimation() {
     "--landing-glow-opacity": "0",
     "--landing-glow-scale": "0.72",
     "--solid-logo-opacity": "0",
-    "--logo-top": "clamp(15.75rem, 53dvh, 30rem)",
-    "--logo-width": "clamp(15rem, min(88vw, 58dvh), 35rem)",
+    "--logo-card-bg-opacity": "0",
+    "--logo-card-border-opacity": "0",
+    "--logo-card-padding": "0px",
+    "--logo-card-radius": "0px",
+    "--logo-top": "clamp(16rem, 53dvh, 28rem)",
+    "--logo-width": "clamp(16rem, min(82vw, 64dvh), 40rem)",
     "--logo-x": "0px",
     "--logo-y": "0px",
     "--logo-scale": "1",
@@ -1355,11 +1373,18 @@ export function IntroAnimation() {
             }}
             data-intro-piece="intro-logo"
           >
-            <div className="intro-logo-handoff-wrap relative">
+            <div className="intro-logo-handoff-wrap relative aspect-[1320/629] w-full">
               <div
-                className="absolute inset-x-[12%] top-[10%] h-[34%] rounded-full bg-plumbing-blue/10 blur-2xl"
-                aria-hidden="true"
-              />
+                className="intro-logo-card relative h-full w-full border shadow-[0_22px_44px_rgba(0,0,0,0.28)]"
+                style={{
+                  background: "rgba(255,255,255,var(--logo-card-bg-opacity))",
+                  borderColor:
+                    "rgba(255,255,255,var(--logo-card-border-opacity))",
+                  borderRadius: "var(--logo-card-radius)",
+                  boxSizing: "border-box",
+                  padding: "var(--logo-card-padding)",
+                }}
+              >
               <span
                 className="logo-mark absolute size-px -translate-x-1/2 -translate-y-1/2"
                 style={{
@@ -1381,22 +1406,20 @@ export function IntroAnimation() {
                 />
               ) : null}
               <Image
-                src="/brand/jk-logo-drop-hole.png"
+                src="/brand/jk-logo-cropped.png"
                 alt="JK Plumbing Solutions"
-                width={1320}
-                height={1189}
+                fill
                 preload
                 sizes="(max-width: 640px) 88vw, 560px"
-                className="relative z-0 h-auto w-full object-contain drop-shadow-[0_28px_34px_rgba(0,0,0,0.42)]"
+                className="relative z-0 object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
               />
               <Image
-                src="/brand/jk-logo-transparent.png"
+                src="/brand/jk-logo-cropped.png"
                 alt=""
-                width={1320}
-                height={1189}
+                fill
                 preload
                 sizes="(max-width: 640px) 88vw, 560px"
-                className="intro-logo-solid pointer-events-none absolute inset-0 z-10 h-auto w-full object-contain drop-shadow-[0_28px_34px_rgba(0,0,0,0.42)]"
+                className="intro-logo-solid pointer-events-none absolute inset-0 z-10 object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.3)]"
                 style={{
                   opacity: "var(--solid-logo-opacity)",
                   willChange: "opacity",
@@ -1404,6 +1427,7 @@ export function IntroAnimation() {
                 aria-hidden="true"
                 data-intro-piece="intro-logo-solid"
               />
+              </div>
             </div>
           </div>
         </div>

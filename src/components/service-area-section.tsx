@@ -1,4 +1,3 @@
-import { MapPin, Navigation } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
@@ -19,8 +18,8 @@ export function ServiceAreaSection() {
         <Reveal delay={0.08}>
           <div className="rounded-lg border border-white/10 bg-white/5 p-6">
             <div className="flex items-start gap-4">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-plumbing-blue text-white">
-                <MapPin aria-hidden="true" size={24} />
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-plumbing-blue text-sm font-semibold text-white">
+                NSW
               </div>
               <div>
                 <h3 className="text-xl font-semibold">Local base, wider Sydney coverage</h3>
@@ -32,8 +31,7 @@ export function ServiceAreaSection() {
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {site.serviceAreas.map((area) => (
-                <div key={area} className="flex items-center gap-3 rounded-lg bg-white/[0.07] p-4 text-sm font-medium text-slate-100">
-                  <Navigation aria-hidden="true" size={16} className="text-plumbing-orange" />
+                <div key={area} className="rounded-lg bg-white/[0.07] p-4 text-sm font-medium text-slate-100">
                   {area}
                 </div>
               ))}

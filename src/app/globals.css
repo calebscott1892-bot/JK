@@ -64,8 +64,8 @@ textarea {
 
 .blue-radial {
   background:
-    radial-gradient(circle at 12% 18%, rgba(21, 122, 201, 0.28), transparent 34%),
-    radial-gradient(circle at 82% 12%, rgba(249, 115, 22, 0.16), transparent 28%),
+    linear-gradient(90deg, rgba(21, 122, 201, 0.16), rgba(16, 19, 24, 0) 46%),
+    linear-gradient(180deg, #101820 0%, #101318 100%),
     #101318;
 }
 

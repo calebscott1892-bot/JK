@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site";
@@ -30,9 +29,8 @@ export function ProjectRangeSection() {
                       {item.examples.map((example) => (
                         <li
                           key={example}
-                          className="inline-flex items-center gap-2 rounded-lg bg-white/[0.07] px-3 py-2 text-xs font-medium text-slate-100"
+                          className="rounded-lg bg-white/[0.07] px-3 py-2 text-xs font-medium text-slate-100"
                         >
-                          <CheckCircle2 aria-hidden="true" size={14} className="text-plumbing-blue" />
                           {example}
                         </li>
                       ))}
@@ -48,8 +46,8 @@ export function ProjectRangeSection() {
           <div className="relative min-h-[520px]">
             <div className="absolute left-0 top-0 h-[62%] w-[72%] overflow-hidden rounded-lg border border-white/10 bg-slate-800 shadow-2xl shadow-black/30">
               <Image
-                src="/images/bathroom.jpg"
-                alt="Finished bathroom plumbing project"
+                src="/images/car%20side%203.JPG"
+                alt="JK Plumbing Solutions work vehicle with drain equipment"
                 fill
                 sizes="(min-width: 1024px) 38vw, 80vw"
                 className="object-cover"
@@ -57,17 +55,17 @@ export function ProjectRangeSection() {
             </div>
             <div className="absolute bottom-0 right-0 h-[54%] w-[58%] overflow-hidden rounded-lg border border-white/10 bg-slate-800 shadow-2xl shadow-black/40">
               <Image
-                src="/images/tap.JPEG"
-                alt="Outdoor tap plumbing repair with running water"
+                src="/images/IMG_7698.PNG"
+                alt="JK Plumbing Solutions commercial service vehicle"
                 fill
                 sizes="(min-width: 1024px) 28vw, 70vw"
                 className="object-cover"
               />
             </div>
             <div className="absolute bottom-[24%] left-[8%] max-w-[260px] rounded-lg border border-white/10 bg-navy-950/92 p-5 shadow-xl backdrop-blur">
-              <p className="text-sm font-semibold text-plumbing-orange">Built for real jobs</p>
+              <p className="text-sm font-semibold text-plumbing-orange">Residential and commercial</p>
               <p className="mt-2 text-lg font-semibold leading-tight text-white">
-                Repairs, maintenance and project plumbing all sit under one practical process.
+                Repairs, maintenance and project plumbing handled from the same service base.
               </p>
             </div>
           </div>
