@@ -19,8 +19,7 @@ export function SiteHeader() {
             aria-label="JK Plumbing Solutions home"
           >
             <span
-              className="header-logo-target relative flex aspect-[1320/629] w-[clamp(8.25rem,32vw,10.75rem)] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-slate-400/70 bg-[#d1d5db] p-1.5 shadow-lg shadow-black/25 transition group-hover:border-plumbing-blue/50"
-              style={{ backgroundColor: "#d1d5db" }}
+              className="header-logo-target relative flex aspect-[1320/629] w-[clamp(8.25rem,32vw,10.75rem)] shrink-0 items-center justify-center overflow-hidden transition"
             >
               <Image
                 src="/brand/jk-logo-cropped.png"

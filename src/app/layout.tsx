@@ -51,6 +51,11 @@ export const metadata: Metadata = {
   },
 };
 
+// Runs before first paint so the server-rendered intro overlay is only ever
+// painted for first-time visitors who want motion. The storage key must match
+// INTRO_STORAGE_KEY in components/IntroAnimation.tsx.
+const introStateScript = `(function(){var s="boot";try{if(sessionStorage.getItem("jk-plumbing:intro-complete:v1")==="true"||window.matchMedia("(prefers-reduced-motion: reduce)").matches){s="complete"}}catch(e){}document.documentElement.dataset.introState=s})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,9 +64,14 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
+      // data-intro-state is set before hydration by introStateScript below.
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full font-sans">{children}</body>
+      <body className="min-h-full font-sans">
+        <script dangerouslySetInnerHTML={{ __html: introStateScript }} />
+        {children}
+      </body>
     </html>
   );
 }

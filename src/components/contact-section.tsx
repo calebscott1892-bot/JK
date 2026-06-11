@@ -35,7 +35,7 @@ export function ContactSection() {
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/15 bg-white px-6 py-4 text-base font-semibold text-navy-950 transition hover:bg-slate-100"
+                  className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/15 bg-[#e9eef5] px-6 py-4 text-base font-semibold text-navy-950 transition hover:bg-[#dfe7f0]"
                 >
                   Email {site.email}
                 </a>

@@ -8,7 +8,10 @@ type QuoteRequestFormProps = {
 };
 
 const cardClassName =
-  "rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl shadow-black/20 sm:p-7";
+  "rounded-2xl border border-slate-200 bg-[#f8fafc] p-5 shadow-2xl shadow-black/20 sm:p-7";
+
+const fieldClassName =
+  "min-h-12 rounded-lg border border-slate-300 bg-[#eef2f6] px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100";
 
 const emptySubscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -46,7 +49,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
             id="contact-name"
             name="name"
             autoComplete="name"
-            className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+            className={fieldClassName}
             placeholder="Your name"
           />
         </div>
@@ -57,7 +60,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
             name="phone"
             type="tel"
             autoComplete="tel"
-            className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+            className={fieldClassName}
             placeholder="Your phone number"
           />
         </div>
@@ -71,7 +74,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
             data-1p-ignore="true"
             data-form-type="other"
             data-lpignore="true"
-            className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+            className={fieldClassName}
             placeholder="you@example.com"
           />
         </div>
@@ -81,7 +84,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
             id="contact-suburb"
             name="suburb"
             autoComplete="address-level2"
-            className="min-h-12 rounded-lg border border-slate-300 px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+            className={fieldClassName}
             placeholder="Job suburb"
           />
         </div>
@@ -90,7 +93,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
           <select
             id="contact-service"
             name="service"
-            className="min-h-12 rounded-lg border border-slate-300 bg-white px-4 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+            className={fieldClassName}
             defaultValue=""
           >
             <option value="" disabled>
@@ -111,7 +114,7 @@ export function QuoteRequestForm({ email, services }: QuoteRequestFormProps) {
           id="contact-message"
           name="message"
           rows={5}
-          className="rounded-lg border border-slate-300 px-4 py-3 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
+          className="rounded-lg border border-slate-300 bg-[#eef2f6] px-4 py-3 text-base font-normal text-navy-950 outline-none transition focus:border-plumbing-blue focus:ring-4 focus:ring-blue-100"
           placeholder="Tell us what is happening, where the job is located, and when you need help."
         />
       </div>

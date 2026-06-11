@@ -8,7 +8,7 @@ export function StickyMobileCall() {
         href={site.phone.href}
         className="flex min-h-[62px] items-center justify-center gap-3 rounded-2xl bg-plumbing-orange px-4 py-3 text-white shadow-xl shadow-black/30"
       >
-        <span className="flex size-10 items-center justify-center rounded-xl bg-white text-plumbing-orange">
+        <span className="flex size-10 items-center justify-center rounded-xl bg-[#eef2f6] text-plumbing-orange">
           <Phone aria-hidden="true" size={21} />
         </span>
         <span className="leading-tight">

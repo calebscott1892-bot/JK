@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function CommonProblemsSection() {
   return (
-    <section id="problems" className="bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="problems" className="bg-[#eef2f6] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <Reveal>
@@ -37,7 +37,7 @@ export function CommonProblemsSection() {
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {site.commonProblems.map((problem, index) => (
             <Reveal key={problem.title} delay={index * 0.04}>
-              <article className="flex h-full flex-col justify-between rounded-lg border border-slate-200 bg-slate-50 p-6 transition hover:border-plumbing-blue/40 hover:bg-white hover:shadow-lg hover:shadow-slate-200/70">
+              <article className="flex h-full flex-col justify-between rounded-lg border border-slate-200 bg-[#f8fafc] p-6 transition hover:border-plumbing-blue/40 hover:bg-[#f1f5f9] hover:shadow-lg hover:shadow-slate-200/70">
                 <div>
                   <span className="font-mono text-sm font-semibold text-plumbing-blue">
                     0{index + 1}

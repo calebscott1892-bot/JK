@@ -5,10 +5,10 @@ import { site } from "@/lib/site";
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-white px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="about" className="bg-[#eef2f6] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <Reveal className="grid gap-3 sm:grid-cols-[1.1fr_0.9fr] lg:min-h-[520px]">
-          <div className="relative min-h-[430px] overflow-hidden rounded-lg bg-slate-100 sm:min-h-full">
+          <div className="relative min-h-[430px] overflow-hidden rounded-lg bg-slate-200 sm:min-h-full">
             <Image
               src="/images/bathroom%202.JPEG"
               alt="Finished bathroom with vanity, bath and toilet"
@@ -18,7 +18,7 @@ export function AboutSection() {
             />
           </div>
           <div className="grid gap-3">
-            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-100">
+            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-200">
               <Image
                 src="/images/double%20sink.JPEG"
                 alt="Double vanity plumbing installation"
@@ -27,7 +27,7 @@ export function AboutSection() {
                 className="object-cover"
               />
             </div>
-            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-100">
+            <div className="relative min-h-[210px] overflow-hidden rounded-lg bg-slate-200">
               <Image
                 src="/images/toilet%20and%20sink.JPEG"
                 alt="Toilet and sink plumbing installation"

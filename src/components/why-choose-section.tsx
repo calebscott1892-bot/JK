@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function WhyChooseSection() {
   return (
-    <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section className="bg-[#e9eef5] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
         <Reveal>
           <SectionHeading
@@ -26,7 +26,7 @@ export function WhyChooseSection() {
         <div className="grid gap-4 sm:grid-cols-2">
           {site.reasons.map((reason, index) => (
             <Reveal key={reason.title} delay={index * 0.04}>
-              <div className="flex h-full gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex h-full gap-4 rounded-lg border border-slate-200 bg-[#f8fafc] p-5 shadow-sm">
                 <span className="mt-1 font-mono text-sm font-semibold text-plumbing-blue">
                   0{index + 1}
                 </span>

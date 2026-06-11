@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #eef2f6;
   --foreground: #0b1220;
 }
 
 @theme inline {
-  --color-background: #ffffff;
+  --color-background: #eef2f6;
   --color-foreground: #0b1220;
   --color-navy-950: #061624;
   --color-navy-900: #082238;
@@ -46,6 +46,19 @@ textarea {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* The intro overlay is server-rendered. A pre-hydration script in layout.tsx
+   sets data-intro-state before first paint, so first-time visitors never see
+   the page flash behind the intro, returning visitors never see the overlay,
+   and without JavaScript the overlay stays hidden entirely. */
+.intro-overlay {
+  display: none;
+}
+
+html[data-intro-state="boot"] .intro-overlay,
+html[data-intro-state="active"] .intro-overlay {
+  display: block;
 }
 
 .brand-grid {

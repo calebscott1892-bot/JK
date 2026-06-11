@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="services" className="bg-[#e9eef5] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionHeading
@@ -28,7 +28,7 @@ export function ServicesSection() {
                   className={
                     isDark
                       ? "group flex h-full min-h-[330px] flex-col rounded-xl bg-navy-950 p-7 text-white shadow-2xl shadow-slate-300/50"
-                      : "group flex h-full min-h-[330px] flex-col rounded-xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-plumbing-blue/35 hover:shadow-xl hover:shadow-slate-200/70"
+                      : "group flex h-full min-h-[330px] flex-col rounded-xl border border-slate-200 bg-[#f8fafc] p-7 shadow-sm transition hover:-translate-y-1 hover:border-plumbing-blue/35 hover:shadow-xl hover:shadow-slate-200/70"
                   }
                 >
                   <div className="flex items-start justify-between gap-4">
@@ -72,7 +72,7 @@ export function ServicesSection() {
         </div>
 
         <Reveal delay={0.12}>
-          <div className="mt-8 flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-8 flex flex-col gap-4 rounded-lg border border-slate-200 bg-[#f8fafc] p-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-3xl text-sm leading-6 text-slate-700">
               Not sure which one fits? Call through what is happening, where the job is and whether it is urgent.
             </p>
