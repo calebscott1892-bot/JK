@@ -1,3 +1,4 @@
+import { C4Credit } from "@/components/c4-credit";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -54,6 +55,11 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Designed by C4 Studios — front and centre, on every page. */}
+      <div className="mx-auto mt-12 flex max-w-7xl justify-center border-t border-white/10 pt-8">
+        <C4Credit />
       </div>
     </footer>
   );
